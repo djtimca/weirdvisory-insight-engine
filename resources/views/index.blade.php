@@ -9,46 +9,65 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Quicksand:wght@300;400;500;600;700&display=swap">
+    <link rel="icon" type="image/png" href="/img/favicon.png">
     <style>
+        :root {
+            --color-dark-brown: #463f3a;
+            --color-medium-brown: #8a817c;
+            --color-light-brown: #bcb8b1;
+            --color-off-white: #f4f3ee;
+            --color-accent: #e0afa0;
+        }
         body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #4B0082, #6A0DAD); /* Custom gradient for a 'weird' feel */
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, var(--color-dark-brown), var(--color-medium-brown)); /* New gradient with our palette */
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 1rem;
-            color: #E0E0E0; /* Light grey text for contrast */
+            color: var(--color-off-white); /* Light text for contrast */
+        }
+        h1, h2, h3, h4, h5, h6, .display-4 {
+            font-family: 'Anton', sans-serif;
+            letter-spacing: 0.02em;
         }
         .container-custom {
-            background-color: rgba(30, 30, 30, 0.85); /* Darker background with transparency */
+            background-color: rgba(70, 63, 58, 0.85); /* Dark brown with transparency */
             backdrop-filter: blur(8px); /* Subtle blur effect */
             border-radius: 1.5rem; /* More rounded corners */
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Deeper shadow */
-            border: 1px solid rgba(128, 0, 128, 0.6); /* Purple border */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Deeper shadow */
+            border: 1px solid var(--color-accent); /* Accent color border */
         }
         .text-gradient {
-            background: linear-gradient(90deg, #A020F0, #FF00FF); /* Purple to Magenta */
+            background: linear-gradient(90deg, var(--color-dark-brown), var(--color-accent)); /* Brown to accent */
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         .btn-custom {
-            background: linear-gradient(90deg, #FF00FF, #A020F0); /* Magenta to Purple for button */
+            background: linear-gradient(90deg, var(--color-accent), var(--color-medium-brown)); /* Accent to medium brown for button */
             border: none;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            color: var(--color-off-white);
         }
         .btn-custom:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 15px rgba(255, 0, 255, 0.4);
+            box-shadow: 0 8px 15px rgba(224, 175, 160, 0.4);
         }
         textarea {
-            background-color: rgba(50, 50, 50, 0.7) !important; /* Darker input background */
-            border: 1px solid rgba(128, 0, 128, 0.7) !important;
-            color: #E0E0E0 !important;
+            background-color: rgba(188, 184, 177, 0.2) !important; /* Light brown with transparency */
+            border: 1px solid var(--color-medium-brown) !important;
+            color: var(--color-off-white) !important;
         }
         textarea::placeholder {
-            color: #A0A0A0 !important;
+            color: var(--color-light-brown) !important;
+        }
+        .bg-dark {
+            background-color: rgba(70, 63, 58, 0.7) !important; /* Dark brown with transparency */
+        }
+        a, .text-info {
+            color: var(--color-accent) !important;
         }
     </style>
     <meta name="csrf-token" content="{{ csrf_token() }}">
