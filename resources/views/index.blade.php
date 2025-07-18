@@ -49,7 +49,7 @@
             background: linear-gradient(90deg, var(--color-accent), var(--color-medium-brown)); /* Accent to medium brown for button */
             border: none;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            color: var(--color-off-white);
+            color: var(--color-off-white) !important;
         }
         .btn-custom:hover {
             transform: translateY(-3px);
