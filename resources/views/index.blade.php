@@ -195,7 +195,7 @@
                 Curious about how this insight engine works? This project is open source! Check out the code repository to see how I've built this application using Laravel, Bootstrap, and modern web technologies. It's a great example of my approach to clean, efficient code and user experience design.
             </p>
             <div class="text-center mt-4">
-                <a href="https://github.com/djtimca/weirdvisory-insight-engine" target="_blank" class="btn btn-custom btn-lg rounded-pill px-5 shadow" style="color: var(--color-off-white);">
+                <a href="https://github.com/djtimca/weirdvisory-insight-engine" target="_blank" class="btn btn-custom btn-lg rounded-pill px-5 shadow" style="color: var(--color-off-white) !important;">
                     View on GitHub <i class="fab fa-github"></i>
                 </a>
             </div>
