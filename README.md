@@ -98,7 +98,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## Contact
 
 For questions or support, contact:
-- Email: hiring@wierdadvisory.com
+- Email: tim.empringham@live.ca
 
 ## Code of Conduct
 

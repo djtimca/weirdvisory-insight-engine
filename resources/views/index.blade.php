@@ -110,10 +110,10 @@
                 This engine is powered by the strategic mind of Tim Empringham, a seasoned business and technology executive with over 25 years of leadership experience. I excel in driving transformative business value through strategic business innovation and technology solutions. I'm passionate about testing emerging AI and development capabilities through personal projects to test the thresholds of 'the art of the possible'.
             </p>
             <p class="fs-5 text-purple-100 mb-2">
-                Connect with me on LinkedIn: <a href="https://linkedin.com/in/timempringham" target="_blank" class="text-info fw-bold text-decoration-none">linkedin.com/in/timempringham <i class="fab fa-linkedin"></i></a>
+                Connect with me on LinkedIn: <a href="https://linkedin.com/in/succeedsooner" target="_blank" class="text-info fw-bold text-decoration-none">linkedin.com/in/succeedsooner <i class="fab fa-linkedin"></i></a>
             </p>
             <p class="fs-5 text-purple-100">
-                View my full resume: <a href="#" target="_blank" class="text-info fw-bold text-decoration-none">Tim Empringham - Resume - 2025.pdf <i class="fas fa-file-alt"></i></a> (or note it's attached to the email)
+                View my full resume: <a href="/downloads/Tim Empringham - Resume - 2025.pdf" target="_blank" class="text-info fw-bold text-decoration-none">Tim Empringham - Resume - 2025.pdf <i class="fas fa-file-alt"></i></a> (or note it's attached to the email)
             </p>
         </section>
 
@@ -161,7 +161,7 @@
                 Let's connect and explore how my strategic leadership and unconventional approaches can bring transformative value to WierdAdvisory's clients.
             </p>
             <p class="fs-4 fw-semibold text-info">
-                Email me at: <a href="mailto:hiring@wierdadvisory.com" class="text-info text-decoration-none hover-underline">hiring@wierdadvisory.com <i class="fas fa-envelope"></i></a>
+                Email me at: <a href="mailto:tim.empringham@live.ca" class="text-info text-decoration-none hover-underline">tim.empringham@live.ca <i class="fas fa-envelope"></i></a>
             </p>
         </footer>
     </div>
