@@ -183,9 +183,9 @@
                 // Log the request attempt
                 console.log('Sending request to /api/generate-insight with problem:', problemInput);
                 
-                // Use window.location.origin to ensure we have the full base URL
-                const apiUrl = `${window.location.origin}/index.php/api/generate-insight`;
-                console.log('Using API URL:', apiUrl);
+                // Try direct web route instead of API route
+                const apiUrl = `${window.location.origin}/generate-insight-web`;
+                console.log('Using direct web route URL:', apiUrl);
                 
                 const response = await fetch(apiUrl, {
                     method: 'POST',
