@@ -42,8 +42,10 @@
         }
         .text-gradient {
             color: var(--color-accent);
-            font-weight: bold;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            font-weight: 900;
+            font-size: 1.2em;
+            text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
+            letter-spacing: 0.03em;
         }
         .btn-custom {
             background: linear-gradient(90deg, var(--color-accent), var(--color-medium-brown)); /* Accent to medium brown for button */
@@ -172,6 +174,20 @@
             </p>
         </section>
 
+        <section class="mb-5">
+            <h2 class="h3 fw-bold text-gradient mb-4 text-center">
+                Explore the Source Code <i class="fab fa-github"></i>
+            </h2>
+            <p class="fs-5 text-purple-100 text-center bg-dark p-4 rounded-3 shadow-sm">
+                Curious about how this insight engine works? This project is open source! Check out the code repository to see how I've built this application using Laravel, Bootstrap, and modern web technologies. It's a great example of my approach to clean, efficient code and user experience design.
+            </p>
+            <div class="text-center mt-4">
+                <a href="https://github.com/djtimca/weirdvisory-insight-engine" target="_blank" class="btn btn-custom btn-lg rounded-pill px-5 shadow">
+                    View on GitHub <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </section>
+
         <footer class="text-center pt-4 border-top border-secondary-subtle">
             <h2 class="h3 fw-bold text-gradient mb-4">
                 Ready to Discuss More 'Weirdness'? <i class="fas fa-handshake"></i>
@@ -180,7 +196,8 @@
                 Let's connect and explore how my strategic leadership and unconventional approaches can bring transformative value to WierdAdvisory's clients.
             </p>
             <p class="fs-4 fw-semibold text-info">
-                Email me at: <a href="mailto:tim.empringham@live.ca" class="text-info text-decoration-none hover-underline">tim.empringham@live.ca <i class="fas fa-envelope"></i></a>
+                Email me at: <a href="mailto:tim.empringham@live.ca" class="text-info text-decoration-none hover-underline">tim.empringham@live.ca <i class="fas fa-envelope"></i></a><br/>
+                Call me at: <a href="tel:289-690-1569" class="text-info text-decoration-none hover-underline">289-690-1569 <i class="fas fa-phone"></i></a>
             </p>
         </footer>
     </div>
