@@ -56,7 +56,18 @@ class InsightController extends Controller
             }
             
             try {
-                $client = new Client();
+                // Log API request for debugging (remove in production)
+                Log::info('Attempting Gemini API call', [
+                    'url' => env('GEMINI_API_URL'),
+                    'payload_size' => strlen(json_encode($payload)),
+                    'api_key_length' => strlen(env('GEMINI_API_KEY'))
+                ]);
+                
+                $client = new Client([
+                    'timeout' => 30,  // Increase timeout to 30 seconds
+                    'connect_timeout' => 10,  // Allow 10 seconds to establish connection
+                ]);
+                
                 $response = $client->post(env('GEMINI_API_URL'), [
                     'headers' => [
                         'Content-Type' => 'application/json',
@@ -65,7 +76,8 @@ class InsightController extends Controller
                     'query' => [
                         'key' => env('GEMINI_API_KEY')
                     ],
-                    'verify' => false, // Set to true in production if SSL is configured
+                    'verify' => false, // Disable SSL verification for troubleshooting
+                    'http_errors' => true, // Enable HTTP errors for better exception handling
                 ]);
 
                 $result = json_decode($response->getBody()->getContents(), true);
@@ -95,9 +107,33 @@ class InsightController extends Controller
                 return response()->json(['error' => 'The AI service is currently unavailable. Please try again later.'], 503);
                 
             } catch (ConnectException $e) {
-                // Handle connection errors
-                Log::error('Gemini API connection error', ['error' => $e->getMessage()]);
-                return response()->json(['error' => 'Could not connect to the AI service. Please check your internet connection and try again.'], 503);
+                // Handle connection errors with more detailed logging
+                Log::error('Gemini API connection error', [
+                    'error' => $e->getMessage(),
+                    'url' => env('GEMINI_API_URL'),
+                    'request_info' => $e->getRequest() ? (string)$e->getRequest()->getUri() : 'No request info',
+                    'curl_error' => $e->getHandlerContext()['errno'] ?? 'No curl error',
+                    'curl_error_message' => $e->getHandlerContext()['error'] ?? 'No curl error message'
+                ]);
+                
+                // Provide more specific error message based on curl error
+                $curlError = $e->getHandlerContext()['errno'] ?? 0;
+                $errorMessage = 'Could not connect to the AI service. ';
+                
+                // Common curl errors and their user-friendly messages
+                if ($curlError == 6) { // CURLE_COULDNT_RESOLVE_HOST
+                    $errorMessage .= 'Could not resolve host name. The API endpoint may be incorrect.';
+                } elseif ($curlError == 7) { // CURLE_COULDNT_CONNECT
+                    $errorMessage .= 'Could not connect to server. The server may be down or blocked by a firewall.';
+                } elseif ($curlError == 28) { // CURLE_OPERATION_TIMEDOUT
+                    $errorMessage .= 'The connection timed out. The server may be overloaded or your network connection is slow.';
+                } elseif ($curlError == 35) { // CURLE_SSL_CONNECT_ERROR
+                    $errorMessage .= 'SSL connection error. There might be an issue with the server\'s SSL certificate.';
+                } else {
+                    $errorMessage .= 'Please check your internet connection and try again.';
+                }
+                
+                return response()->json(['error' => $errorMessage], 503);
                 
             } catch (\Exception $e) {
                 // Handle any other exceptions
