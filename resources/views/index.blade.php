@@ -41,9 +41,9 @@
             border: 1px solid var(--color-accent); /* Accent color border */
         }
         .text-gradient {
-            background: linear-gradient(90deg, var(--color-dark-brown), var(--color-accent)); /* Brown to accent */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--color-accent);
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
         .btn-custom {
             background: linear-gradient(90deg, var(--color-accent), var(--color-medium-brown)); /* Accent to medium brown for button */
