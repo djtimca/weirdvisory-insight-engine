@@ -38,6 +38,12 @@ cp .env.example .env
 
 # Generate application key
 php artisan key:generate
+
+# Create the SQLite database file
+touch database/database.sqlite
+
+# Run migrations to set up the session table
+php artisan migrate --force
 ```
 
 Edit the `.env` file to set your environment-specific configurations:
@@ -47,6 +53,10 @@ APP_NAME="Tim's Weirdvisory Strategic Insight Engine"
 APP_ENV=production
 APP_DEBUG=false
 APP_URL=https://your-domain.com
+
+# Database Configuration
+DB_CONNECTION=sqlite
+# No need for other DB_ settings when using SQLite
 
 # Gemini API Configuration
 GEMINI_API_URL="https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent"

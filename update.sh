@@ -29,8 +29,14 @@ php artisan config:clear
 php artisan route:clear
 php artisan view:clear
 
-# Run migrations if any
-echo "Running database migrations (if any)..."
+# Ensure SQLite database exists
+if [ ! -f "database/database.sqlite" ]; then
+    echo "Creating SQLite database file..."
+    touch database/database.sqlite
+fi
+
+# Run migrations
+echo "Running database migrations..."
 php artisan migrate --force
 
 # Optimize the application
