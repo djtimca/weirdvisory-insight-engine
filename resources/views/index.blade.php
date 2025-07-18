@@ -183,7 +183,11 @@
                 // Log the request attempt
                 console.log('Sending request to /api/generate-insight with problem:', problemInput);
                 
-                const response = await fetch('/api/generate-insight', {
+                // Use window.location.origin to ensure we have the full base URL
+                const apiUrl = `${window.location.origin}/index.php/api/generate-insight`;
+                console.log('Using API URL:', apiUrl);
+                
+                const response = await fetch(apiUrl, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
