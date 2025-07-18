@@ -180,6 +180,9 @@
             insightOutput.innerHTML = '<span class="text-info animate-pulse"><i class="fas fa-spinner fa-spin me-2"></i>Analyzing weirdness... 🧐</span>';
 
             try {
+                // Log the request attempt
+                console.log('Sending request to /api/generate-insight with problem:', problemInput);
+                
                 const response = await fetch('/api/generate-insight', {
                     method: 'POST',
                     headers: {
@@ -188,13 +191,19 @@
                     },
                     body: JSON.stringify({ problem: problemInput })
                 });
-
+                
+                console.log('Response status:', response.status);
+                console.log('Response headers:', [...response.headers.entries()]);
+                
                 const data = await response.json();
+                console.log('Response data:', data);
 
                 if (response.ok) {
                     insightOutput.innerHTML = data.insight;
+                    console.log('Success: Insight displayed');
                 } else {
                     insightOutput.innerHTML = `<span class="text-danger">Error: ${data.error || 'Something went wrong on the server.'} <i class="fas fa-exclamation-triangle"></i></span>`;
+                    console.error('API error:', data.error || 'Unknown server error');
                 }
             } catch (error) {
                 console.error('Fetch error:', error);

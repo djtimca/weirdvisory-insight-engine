@@ -22,20 +22,39 @@ class InsightController extends Controller
      */
     public function generate(Request $request)
     {
-        // Start logging immediately
-        Log::info('InsightController generate method called', [
+        // Start logging immediately with emergency level to ensure it's captured
+        Log::emergency('InsightController generate method called', [
             'input' => $request->input('problem'),
             'ip' => $request->ip(),
-            'user_agent' => $request->userAgent()
+            'user_agent' => $request->userAgent(),
+            'request_path' => $request->path(),
+            'request_url' => $request->url(),
+            'request_method' => $request->method(),
+            'request_headers' => $request->header(),
+            'request_all' => $request->all()
         ]);
         
         // Force reload environment variables
         $loadedVars = EnvHelper::reloadEnvironment();
-        Log::info('Environment variables reloaded in InsightController', [
+        Log::emergency('Environment variables reloaded in InsightController', [
             'loaded_count' => count($loadedVars),
             'gemini_api_url' => env('GEMINI_API_URL'),
-            'gemini_api_key_length' => strlen(env('GEMINI_API_KEY'))
+            'gemini_api_key_length' => strlen(env('GEMINI_API_KEY')),
+            'app_env' => env('APP_ENV'),
+            'app_debug' => env('APP_DEBUG'),
+            'log_level' => env('LOG_LEVEL')
         ]);
+        
+        // Write to a separate debug file to ensure it's captured
+        file_put_contents(
+            storage_path('logs/debug_insight.log'),
+            date('[Y-m-d H:i:s] ') . 'InsightController called: ' . json_encode([
+                'input' => $request->input('problem'),
+                'path' => $request->path(),
+                'url' => $request->url()
+            ]) . "\n",
+            FILE_APPEND
+        );
         try {
             // Validate the request with custom error messages
             $validated = $request->validate([
