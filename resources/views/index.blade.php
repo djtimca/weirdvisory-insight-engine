@@ -7,7 +7,7 @@
     
     <!-- Open Graph / Social Media Meta Tags -->
     <meta property="og:title" content="Tim's Weirdvisory Strategic Insight Engine">
-    <meta property="og:description" content="An unconventional approach to strategic challenges. At WierdAdvisory, we thrive on the complex and the 'weird.'">
+    <meta property="og:description" content="An unconventional approach to strategic challenges. At WierdAdvisory, you thrive on the complex and the 'weird.'">
     <meta property="og:image" content="https://weirdvisory.succeedsooner.ca/img/page_preview.jpg">
     <meta property="og:url" content="https://weirdvisory.succeedsooner.ca">
     <meta property="og:type" content="website">
@@ -92,7 +92,7 @@
                 "Sometimes the questions are complicated and the answers are simple." <br> - Dr. Seuss <i class="fas fa-search-dollar"></i><i class="fas fa-lightbulb"></i>
             </p>
             <p class="mt-4 fs-5 text-purple-100">
-                Welcome to an unconventional approach to strategic challenges. At WierdAdvisory, we thrive on the complex and the 'weird.' This engine offers a glimpse into how I approach unlocking strategic insights. <i class="fas fa-rocket"></i>
+                Welcome to an unconventional approach to strategic challenges. At WierdAdvisory, you thrive on the complex and the 'weird.' This engine offers a glimpse into how I approach unlocking strategic insights. <i class="fas fa-rocket"></i>
             </p>
         </header>
 
