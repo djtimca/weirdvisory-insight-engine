@@ -43,7 +43,6 @@
         .text-gradient {
             color: var(--color-accent);
             font-weight: 900;
-            font-size: 1.5em;
             text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
         }
         .btn-custom {
