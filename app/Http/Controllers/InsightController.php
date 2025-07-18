@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ServerException;
 use GuzzleHttp\Exception\ConnectException;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Validation\ValidationException;
+use App\Helpers\EnvHelper;
 
 class InsightController extends Controller
 {
@@ -25,6 +27,14 @@ class InsightController extends Controller
             'input' => $request->input('problem'),
             'ip' => $request->ip(),
             'user_agent' => $request->userAgent()
+        ]);
+        
+        // Force reload environment variables
+        $loadedVars = EnvHelper::reloadEnvironment();
+        Log::info('Environment variables reloaded in InsightController', [
+            'loaded_count' => count($loadedVars),
+            'gemini_api_url' => env('GEMINI_API_URL'),
+            'gemini_api_key_length' => strlen(env('GEMINI_API_KEY'))
         ]);
         try {
             // Validate the request with custom error messages

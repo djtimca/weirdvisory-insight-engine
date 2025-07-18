@@ -4,14 +4,28 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use App\Helpers\EnvHelper;
 
 class LogTestController extends Controller
 {
     public function testLog()
     {
+        // Force reload environment variables
+        $loadedVars = EnvHelper::reloadEnvironment();
+        
         // Test Gemini API connectivity
         $geminiApiUrl = env('GEMINI_API_URL');
         $geminiApiKey = env('GEMINI_API_KEY');
+        
+        // Log environment status
+        Log::info('Environment variables status', [
+            'loaded_count' => count($loadedVars),
+            'gemini_api_url' => $geminiApiUrl,
+            'gemini_api_key_length' => strlen($geminiApiKey),
+            'app_env' => env('APP_ENV'),
+            'app_debug' => env('APP_DEBUG')
+        ]);
+        
         $apiConnectivityResults = $this->testApiConnectivity($geminiApiUrl, $geminiApiKey);
         Log::info('Gemini API connectivity test', $apiConnectivityResults);
         
