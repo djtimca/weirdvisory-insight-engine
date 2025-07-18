@@ -65,40 +65,8 @@ class InsightController extends Controller
             }
             
             try {
-                // Log API request for debugging (remove in production)
-                Log::info('Attempting Gemini API call', [
-                    'url' => env('GEMINI_API_URL'),
-                    'payload_size' => strlen(json_encode($payload)),
-                    'api_key_length' => strlen(env('GEMINI_API_KEY')),
-                    'server_ip' => $_SERVER['SERVER_ADDR'] ?? 'unknown',
-                    'php_version' => phpversion(),
-                    'curl_version' => function_exists('curl_version') ? json_encode(curl_version()) : 'curl not available'
-                ]);
-                
-                // Test DNS resolution
-                $apiHost = parse_url(env('GEMINI_API_URL'), PHP_URL_HOST);
-                $dnsResult = @gethostbyname($apiHost);
-                $dnsResolved = ($dnsResult !== $apiHost);
-                Log::info('DNS resolution test', [
-                    'host' => $apiHost,
-                    'resolved_ip' => $dnsResult,
-                    'success' => $dnsResolved ? 'yes' : 'no'
-                ]);
-                
-                // Test direct socket connection to API endpoint
-                $apiPort = parse_url(env('GEMINI_API_URL'), PHP_URL_PORT) ?: 443; // Default to HTTPS port
-                $socketTest = @fsockopen($apiHost, $apiPort, $errno, $errstr, 5);
-                $socketSuccess = is_resource($socketTest);
-                if ($socketSuccess) {
-                    fclose($socketTest);
-                }
-                Log::info('Socket connection test', [
-                    'host' => $apiHost,
-                    'port' => $apiPort,
-                    'success' => $socketSuccess ? 'yes' : 'no',
-                    'error_number' => $errno ?? 'none',
-                    'error_message' => $errstr ?? 'none'
-                ]);
+                // Log minimal API request info
+                Log::info('Attempting Gemini API call');
                 
                 $client = new Client([
                     'timeout' => 30,  // Increase timeout to 30 seconds
