@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tim's Weirdvisory Strategic Insight Engine</title>
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Tim's Weirdvisory Strategic Insight Engine">
+    <meta property="og:description" content="An unconventional approach to strategic challenges. At WierdAdvisory, we thrive on the complex and the 'weird.'">
+    <meta property="og:image" content="https://weirdvisory.succeedsooner.ca/img/page_preview.jpg">
+    <meta property="og:url" content="https://weirdvisory.succeedsooner.ca">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
