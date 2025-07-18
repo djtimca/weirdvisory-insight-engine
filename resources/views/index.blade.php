@@ -43,9 +43,8 @@
         .text-gradient {
             color: var(--color-accent);
             font-weight: 900;
-            font-size: 1.2em;
+            font-size: 1.5em;
             text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
-            letter-spacing: 0.03em;
         }
         .btn-custom {
             background: linear-gradient(90deg, var(--color-accent), var(--color-medium-brown)); /* Accent to medium brown for button */
@@ -82,7 +81,7 @@
             <h1 class="display-4 fw-bolder text-gradient mb-3">
                 Tim's Weirdvisory Strategic Insight Engine
             </h1>
-            <p class="lead fw-normal text-purple-200">
+            <p class="lead fw-bold text-purple-200" style="font-size: 1.4em;">
                 "Sometimes the questions are complicated and the answers are simple." <br> - Dr. Seuss <i class="fas fa-search-dollar"></i><i class="fas fa-lightbulb"></i>
             </p>
             <p class="mt-4 fs-5 text-purple-100">
@@ -174,20 +173,6 @@
             </p>
         </section>
 
-        <section class="mb-5">
-            <h2 class="h3 fw-bold text-gradient mb-4 text-center">
-                Explore the Source Code <i class="fab fa-github"></i>
-            </h2>
-            <p class="fs-5 text-purple-100 text-center bg-dark p-4 rounded-3 shadow-sm">
-                Curious about how this insight engine works? This project is open source! Check out the code repository to see how I've built this application using Laravel, Bootstrap, and modern web technologies. It's a great example of my approach to clean, efficient code and user experience design.
-            </p>
-            <div class="text-center mt-4">
-                <a href="https://github.com/djtimca/weirdvisory-insight-engine" target="_blank" class="btn btn-custom btn-lg rounded-pill px-5 shadow">
-                    View on GitHub <i class="fab fa-github"></i>
-                </a>
-            </div>
-        </section>
-
         <footer class="text-center pt-4 border-top border-secondary-subtle">
             <h2 class="h3 fw-bold text-gradient mb-4">
                 Ready to Discuss More 'Weirdness'? <i class="fas fa-handshake"></i>
@@ -200,6 +185,22 @@
                 Call me at: <a href="tel:289-690-1569" class="text-info text-decoration-none hover-underline">289-690-1569 <i class="fas fa-phone"></i></a>
             </p>
         </footer>
+        
+        <hr class="my-5 border-secondary-subtle">
+        
+        <section class="mb-5">
+            <h2 class="h3 fw-bold text-gradient mb-4 text-center">
+                Explore the Source Code <i class="fab fa-github"></i>
+            </h2>
+            <p class="fs-5 text-purple-100 text-center bg-dark p-4 rounded-3 shadow-sm">
+                Curious about how this insight engine works? This project is open source! Check out the code repository to see how I've built this application using Laravel, Bootstrap, and modern web technologies. It's a great example of my approach to clean, efficient code and user experience design.
+            </p>
+            <div class="text-center mt-4">
+                <a href="https://github.com/djtimca/weirdvisory-insight-engine" target="_blank" class="btn btn-custom btn-lg rounded-pill px-5 shadow" style="color: var(--color-off-white);">
+                    View on GitHub <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </section>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
