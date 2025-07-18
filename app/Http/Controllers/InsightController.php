@@ -20,6 +20,12 @@ class InsightController extends Controller
      */
     public function generate(Request $request)
     {
+        // Start logging immediately
+        Log::info('InsightController generate method called', [
+            'input' => $request->input('problem'),
+            'ip' => $request->ip(),
+            'user_agent' => $request->userAgent()
+        ]);
         try {
             // Validate the request with custom error messages
             $validated = $request->validate([

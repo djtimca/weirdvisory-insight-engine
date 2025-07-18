@@ -9,6 +9,12 @@ class LogTestController extends Controller
 {
     public function testLog()
     {
+        // Test Gemini API connectivity
+        $geminiApiUrl = env('GEMINI_API_URL');
+        $geminiApiKey = env('GEMINI_API_KEY');
+        $apiConnectivityResults = $this->testApiConnectivity($geminiApiUrl, $geminiApiKey);
+        Log::info('Gemini API connectivity test', $apiConnectivityResults);
+        
         // Test basic logging
         Log::emergency('Test emergency log');
         Log::alert('Test alert log');
@@ -50,5 +56,82 @@ class LogTestController extends Controller
                 'open_basedir' => ini_get('open_basedir')
             ]
         ]);
+    }
+    
+    /**
+     * Test connectivity to the Gemini API
+     *
+     * @param string $apiUrl
+     * @param string $apiKey
+     * @return array
+     */
+    private function testApiConnectivity($apiUrl, $apiKey)
+    {
+        $results = [
+            'url' => $apiUrl,
+            'api_key_length' => strlen($apiKey),
+            'tests' => []
+        ];
+        
+        // Parse URL components
+        $urlParts = parse_url($apiUrl);
+        $results['url_parts'] = $urlParts;
+        
+        // Test 1: DNS resolution
+        $host = $urlParts['host'] ?? '';
+        if ($host) {
+            $dnsResult = @gethostbyname($host);
+            $dnsResolved = ($dnsResult !== $host);
+            $results['tests']['dns'] = [
+                'host' => $host,
+                'resolved_ip' => $dnsResult,
+                'success' => $dnsResolved
+            ];
+        }
+        
+        // Test 2: Socket connection
+        if ($host) {
+            $port = $urlParts['port'] ?? ($urlParts['scheme'] === 'https' ? 443 : 80);
+            $socketTest = @fsockopen($host, $port, $errno, $errstr, 5);
+            $socketSuccess = is_resource($socketTest);
+            if ($socketSuccess) {
+                fclose($socketTest);
+            }
+            $results['tests']['socket'] = [
+                'host' => $host,
+                'port' => $port,
+                'success' => $socketSuccess,
+                'error_number' => $errno ?? 0,
+                'error_message' => $errstr ?? ''
+            ];
+        }
+        
+        // Test 3: Simple HTTP request without API key
+        try {
+            $client = new \GuzzleHttp\Client([
+                'timeout' => 10,
+                'connect_timeout' => 5,
+                'verify' => false
+            ]);
+            
+            // Make a simple HEAD request to the API domain (not the full API URL)
+            $domainUrl = $urlParts['scheme'] . '://' . $host;
+            $response = $client->head($domainUrl);
+            
+            $results['tests']['http'] = [
+                'url' => $domainUrl,
+                'status_code' => $response->getStatusCode(),
+                'success' => true
+            ];
+        } catch (\Exception $e) {
+            $results['tests']['http'] = [
+                'url' => $domainUrl ?? $host,
+                'success' => false,
+                'error' => $e->getMessage(),
+                'error_type' => get_class($e)
+            ];
+        }
+        
+        return $results;
     }
 }
